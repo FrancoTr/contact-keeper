@@ -40,7 +40,7 @@ router.post('/', [
 
         await user.save()
 
-        const paylod = {    //sent object inside the token
+        const payload = {    //sent object inside the token
             user: {
                 id: user.id
             }
