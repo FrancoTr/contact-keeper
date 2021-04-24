@@ -46,7 +46,14 @@ router.post('/', [
             }
         }
 
-        jwt.sign(payload, config.get('jwtSecret'))
+        jwt.sign(payload, config.get('jwtSecret'), {
+            expiresIn: 36000    //tweak to 360 (1 hour) when finished testing
+        }, (err, token) => {
+            if(err) {
+                throw err
+            } 
+            res.json({ token })
+        })
     } catch (err) {
         console.error(err.message)
         res.status(500).send('Server Error')
