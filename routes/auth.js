@@ -13,7 +13,7 @@ const User = require('../models/User')
 // @access  Private
 router.get('/', auth, async (req, res) => {
     try {
-        const user = await (await User.findById(req.user.id)).isSelected('-password')   //gets all the data from User, sans the encripted password
+        const user = await User.findById(req.user.id).select('-password')   //gets all the data from User, sans the encripted password
         res.json(user)
     } catch (err) {
         console.error(err.message)
