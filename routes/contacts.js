@@ -11,7 +11,7 @@ const Contact = require('../models/Contact')
 // @access  Private
 router.get('/', auth, async (req, res) => {
     try {
-        const contacts = await Contact.find({ user: requestAnimationFrame.user.id }).sort({ date: -1 }) //-1 will make it to show the most recent contacts
+        const contacts = await Contact.find({ user: req.user.id }).sort({ date: -1 }) //-1 will make it to show the most recent contacts
         res.json(contacts)
     } catch (err) {
         console.error(err.message)
