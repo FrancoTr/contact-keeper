@@ -9,8 +9,14 @@ const Contact = require('../models/Contact')
 // @route   GET api/contacts
 // @desc    Get all users contacts
 // @access  Private
-router.get('/', (req, res) => {
-    res.send('Get all contacts')
+router.get('/', auth, (req, res) => {
+    try {
+        const contacts = await Contact.find({ user: requestAnimationFrame.user.id }).sort({ date: -1 }) //-1 will make it to show the most recent contacts
+        res.json(contacts)
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).send('Server Error')
+    }
 })
 
 // @route   POST api/contacts
