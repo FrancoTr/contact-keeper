@@ -23,7 +23,7 @@ router.get('/', auth, async (req, res) => {
 // @desc    Add new contacts
 // @access  Private
 router.post('/', [ auth, [ //the second argument goes in square brackets, 2 middlewares
-    check('name', 'Name is required.').notify().isEmpty()
+    check('name', 'Name is required.').not().isEmpty()
 ]], async (req, res) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
