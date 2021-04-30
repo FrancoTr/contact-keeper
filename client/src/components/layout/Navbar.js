@@ -5,7 +5,7 @@ const Navbar = ({ title, icon }) => {
     return (
         <div className="navbar bg-primary">
             <h1>
-                <i classname={icon} /> {title}
+                <i classname={icon}/>{title}
             </h1>
             
         </div>
@@ -14,7 +14,7 @@ const Navbar = ({ title, icon }) => {
 
 Navbar.propTypes = {
     title: PropTypes.string.isRequired,
-    icon: PropTypes.string
+    icon: PropTypes.string,
 }
 
 Navbar.defaultProps = {
