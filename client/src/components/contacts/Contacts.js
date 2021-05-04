@@ -10,8 +10,8 @@ const Contacts = () => {
     return (
         <Fragment>
             {contacts.map(contact => (
-            <ContactItem key={contact.id} contact={contact}></ContactItem> //I pass the specific contact context as a prop
-            ))}
+            <ContactItem key={contact.id} contact={contact}/> 
+            ))} 
         </Fragment>
     )
 }
