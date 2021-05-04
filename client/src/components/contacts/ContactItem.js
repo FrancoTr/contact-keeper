@@ -18,6 +18,10 @@ const ContactItem = ({ contact }) => {
                     <i className="fas fa-phone"></i> {phone}
                 </li>)}
             </ul>
+            <p>
+                <button className="btn tbn-dark btn-sm">Edit</button>
+                <button className="btn tbn-danger btn-sm">Delete</button>
+            </p>
         </div>
     )
 }
