@@ -37,7 +37,8 @@ const ContactState = props => {
                 type: 'professional'
 
             }
-        ]    
+        ],
+        current: null   // When I edit a contact, I want to reset the ContactItem component field values
     }
 
     const [state, dispatch] = useReducer(contactReducer, initialState)
