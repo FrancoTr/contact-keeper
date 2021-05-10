@@ -53,6 +53,9 @@ const ContactForm = () => {
             <div>
                 <input type="submit" value={current ? 'Update Contact' : 'Add Contact'} className="btn btn-primary btn-block"/>
             </div>
+            {current && <div>
+                <button className="btn btn-light btn-blok" onClick={clearAll}>Clear</button>
+            </div> }
         </form>
     )
 }
