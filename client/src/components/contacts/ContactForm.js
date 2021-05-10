@@ -1,8 +1,23 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import ContactContext from '../../context/contact/contactContext'
 
 const ContactForm = () => {
     const contactContext = useContext(ContactContext)
+
+    const { addContact, current } = contactContext
+
+    useEffect(() => {
+        if(current !== null) {
+            setContact(current) //I fill the form with all the current field values
+        } else {
+            setContact({    //I clear the form
+                name: '',
+                email: '',
+                phone: '',
+                type: 'personal'
+            })
+        }
+    })
 
     const [contact, setContact] = useState({
         name: '',
