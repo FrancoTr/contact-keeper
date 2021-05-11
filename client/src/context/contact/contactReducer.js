@@ -43,6 +43,11 @@ export default (state, action) => {
                     return contact.name.match(regex) || contact.email.match(regex)  //if matches by name or email the searched text
                 })
             }
+        case CLEAR_FILTER:
+            return {
+                ...state,
+                filtered: null
+            }
         default:
             return state
     }
