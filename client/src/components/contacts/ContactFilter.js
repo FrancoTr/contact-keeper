@@ -15,7 +15,7 @@ const ContactFilter = () => {
 
     const onChange = e => {
         if(text.current.value !== '') {
-            filterContacts(e.target) //filterContacts compares what was wrote in the filter with any current contact (name or email)
+            filterContacts(e.target.value) //filterContacts compares what was wrote in the filter with any current contact (name or email)
         } else {
             clearFilter()
         }
