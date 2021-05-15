@@ -20,7 +20,7 @@ const AuthState = props => {
         error: null
     }
 
-    const [state, dispatch] = authReducer(authReducer, initialState)
+    const [state, dispatch] = useReducer(authReducer, initialState)
 
     // Load User
 
