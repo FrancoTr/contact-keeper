@@ -5,7 +5,7 @@ const Register = () => {
     const alertContext = useContext(AlertContext)
 
     const { setAlert } = alertContext
-    
+
     const [user, setUser] = useState({
         name: '',
         email: '',
@@ -19,7 +19,13 @@ const Register = () => {
 
     const onSubmit = e => {
         e.preventDefault()
-        console.log('Register submit')
+        if(name ===''  || email ==='' || password ==='') {
+            setAlert('Please enter all fields', 'danger')   // (msg, type)
+        } else if(password !== password2)  {    //the user fails to match the password validation
+            setAlert('Passwords do not match', 'danger')
+        } else {
+            console.log('Register submit')
+        } 
     }
 
     return (
