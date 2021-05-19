@@ -8,3 +8,18 @@ import {
   LOGOUT,
   CLEAR_ERRORS,
 } from "../types";
+
+export default (state, action) => {
+  switch (action.type) {
+    case REGISTER_SUCCESS:
+      localStorage.setItem("token", action.payload.token); //saves the token (local, not DB)
+      return {
+        ...state,
+        ...action.payload,
+        isAuthenticated: true,
+        loading: false, // loading is true by default
+      };
+    default:
+      return state;
+  }
+};
