@@ -8,6 +8,8 @@ const Register = () => {
 
   const { setAlert } = alertContext;
 
+  const { register } = authContext;
+
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -27,7 +29,12 @@ const Register = () => {
       //the user fails to match the password validation
       setAlert("Passwords do not match", "danger");
     } else {
-      console.log("Register submit");
+      register({
+        //form data
+        name,
+        email,
+        password,
+      });
     }
   };
 
