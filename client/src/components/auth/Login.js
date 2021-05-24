@@ -1,38 +1,54 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from "react";
+import AuthContext from "../../context/auth/authContext";
 
 const Login = () => {
-    const [user, setUser] = useState({
-        email: '',
-        password: ''
-    })
+  const alertContext = useContext(AlertContext);
+  const authContext = useContext(AuthContext);
 
-    const { email, password } = user
+  const { setAlert } = alertContext;
+  const { login, error, clearErrors, isAuthenticated } = authContext;
 
-    const onChange = e => setUser({ ...user, [e.target.name]: e.target.value })
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
 
-    const onSubmit = e => {
-        e.preventDefault()
-        console.log('Login submit')
-    }
+  const { email, password } = user;
 
-    return (
-        <div className='form-container'>
-            <h1>
-                Account <span className='text-primary'>Login</span>
-            </h1>
-            <form onSubmit={onSubmit}>
-                <div className='form-group'>
-                    <label htmlFor='email'>Email Address</label>
-                    <input type='email' name='email' value={email} onChange={onChange}/>
-                </div>
-                <div className='form-group'>
-                    <label htmlFor='password'>Password</label>
-                    <input type='password' name='password' value={password} onChange={onChange}/>
-                </div>
-                <input type='submit' value='Login'className='btn btn-primary btn-block'/>
-            </form>
+  const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log("Login submit");
+  };
+
+  return (
+    <div className="form-container">
+      <h1>
+        Account <span className="text-primary">Login</span>
+      </h1>
+      <form onSubmit={onSubmit}>
+        <div className="form-group">
+          <label htmlFor="email">Email Address</label>
+          <input type="email" name="email" value={email} onChange={onChange} />
         </div>
-    )
-}
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={onChange}
+          />
+        </div>
+        <input
+          type="submit"
+          value="Login"
+          className="btn btn-primary btn-block"
+        />
+      </form>
+    </div>
+  );
+};
 
-export default Login
+export default Login;
