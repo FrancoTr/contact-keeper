@@ -8,6 +8,17 @@ const Login = () => {
   const { setAlert } = alertContext;
   const { login, error, clearErrors, isAuthenticated } = authContext;
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      props.history.push("/"); //redirect to the homepage
+    }
+
+    if (error === "User already exists") {
+      setAlert(error, "danger");
+      clearErrors();
+    }
+  }, [error, isAuthenticated, props.history]); // [error] is the dependency to useEffect
+
   const [user, setUser] = useState({
     email: "",
     password: "",
