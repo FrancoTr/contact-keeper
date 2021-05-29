@@ -18,6 +18,7 @@ const ContactState = (props) => {
     contacts: [],
     current: null, // When I edit a contact, I want to reset the ContactItem component field values
     filtered: null, // Array of filtered contacts
+    error: null,
   };
 
   const [state, dispatch] = useReducer(contactReducer, initialState);
@@ -79,6 +80,7 @@ const ContactState = (props) => {
         contacts: state.contacts,
         current: state.current,
         filtered: state.filtered,
+        error: state.error,
         addContact,
         deleteContact,
         setCurrent,
