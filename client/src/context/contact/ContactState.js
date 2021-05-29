@@ -1,6 +1,5 @@
 import React, { useReducer } from "react";
 import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
 import ContactContext from "./contactContext";
 import contactReducer from "./contactReducer";
 import {
@@ -23,9 +22,21 @@ const ContactState = (props) => {
   const [state, dispatch] = useReducer(contactReducer, initialState);
 
   // Add Contact
-  const addContact = (contact) => {
-    contact.id = uuidv4(); //uuid generates an ID for us
-    dispatch({ type: ADD_CONTACT, payload: contact });
+  const addContact = async (contact) => {
+    const config = {
+      headers: {
+        "content-type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.post("/api/contacts", contact, config);
+      dispatch({
+        type: ADD_CONTACT,
+        payload: res.data,
+      }); //res.data has all the data from the contact
+    } catch (err) {
+      dispatch({ type: CONTACT_ERROR });
+    }
   };
 
   // Delete Contact
