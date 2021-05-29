@@ -35,7 +35,10 @@ const ContactState = (props) => {
         payload: res.data,
       }); //res.data has all the data from the contact
     } catch (err) {
-      dispatch({ type: CONTACT_ERROR });
+      dispatch({
+        type: CONTACT_ERROR,
+        payload: err.response.msg,
+      });
     }
   };
 
