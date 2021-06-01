@@ -14,7 +14,7 @@ const Contacts = () => {
     //eslint-disable-next-line
   }, []); //an empty set of brackets will make the useEffect callback to be called as soon as the component loads
 
-  if (contacts.length === 0) {
+  if (contacts !== null && contacts.length === 0 && !loading) {
     return <h4>Please add a contact</h4>;
   }
 
