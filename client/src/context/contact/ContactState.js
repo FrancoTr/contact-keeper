@@ -17,7 +17,7 @@ import {
 
 const ContactState = (props) => {
   const initialState = {
-    contacts: [],
+    contacts: null,
     current: null, // When I edit a contact, I want to reset the ContactItem component field values
     filtered: null, // Array of filtered contacts
     error: null,
