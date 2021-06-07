@@ -10,10 +10,6 @@ connectDB();
 // Init Middleware
 app.use(express.json({ extended: false }));
 
-/*app.get('/', (req, res) => {
-    res.json({ msg: 'ContactKeeper API'})
-})*/
-
 // Routes
 app.use("/api/users", require("./routes/users")); //whenever some hits a specific endpoint, it will require its specific route file
 app.use("/api/auth", require("./routes/auth"));
